@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.minicontainer {
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .minicontainer {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .minicontainer {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.post {
+    border: 1px solid #000;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
