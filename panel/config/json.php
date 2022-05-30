@@ -13,5 +13,5 @@ class JSON
 if (isset($_SESSION['admin'])) {
     $json = new GlobalJSON();
 } else {
-    echo '[{"postby":"ადმინისტრატორი","post":"თქვენ არ გაქვთ ადმინისტრატორის უფლებები","image":"403.png"}]';
+    echo '[{"id": null,"postby":"ადმინისტრატორი","post":"თქვენ არ გაქვთ ადმინისტრატორის უფლებები","image":"403.png"}]';
 }

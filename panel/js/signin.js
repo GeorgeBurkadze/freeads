@@ -13,7 +13,7 @@ showpassword.addEventListener("change", () =>{
     }
 })
 
-fetch("http://ufasoreklama.epizy.com/panel/config/signin.php").then(response => response.text()).then(data => {
+fetch("http://localhost:8000/panel/config/signin.php").then(response => response.text()).then(data => {
     if (data !== '') {
         usernamemsg.innerHTML = `<b class="text-success">${data}</b>`
     }
@@ -36,7 +36,7 @@ signinbutton.addEventListener("click", () => {
             passwordmsg.innerHTML = ``
         }
     } else {
-        fetch("http://ufasoreklama.epizy.com/panel/config/signin.php", {
+        fetch("http://localhost:8000/panel/config/signin.php", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -47,7 +47,7 @@ signinbutton.addEventListener("click", () => {
             if (data !== '') {
                 usernamemsg.innerHTML = `<b class="text-danger">${data}</b>`
             } else {
-                // document.location.href = './'
+                document.location.href = './'
             }
         }).catch(error => console.log(error))
     }

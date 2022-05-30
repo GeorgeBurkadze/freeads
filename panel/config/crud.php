@@ -20,15 +20,23 @@ class Crud
     public function deletepost()
     {
         require_once __DIR__ . "/connect.php";
-        $id = $_GET['postid'];
-        $image = "SELECT `image` FROM `posts` WHERE `id` = '$id'";
-        $imageresult = $dbconnect->conn->$image;
-        while ($imagerow = $imageresult->fetch_assoc()) {
-            unlink(__DIR__ . '/images/' . $imagerow);
-        }
-        $deletepost = "DELETE FROM `posts` WHERE `id` = '$id'";
-        if ($dbconnect->conn->query($deletepost) === TRUE) {
-            echo "განცხადება წარმატებით წაიშალა";
+        $id = $_GET['id'];
+        $image = "SELECT * FROM `posts` WHERE `id` = '$id'";
+        $imageresult = $dbconnect->conn->query($image);
+        if ($imageresult->num_rows === 1) {
+            while ($imagerow = $imageresult->fetch_assoc()) {
+                if (file_exists(__DIR__ . '/../../images/' . $imagerow['image'])) {
+                    unlink(__DIR__ . '/../../images/' . $imagerow['image']);
+                } else {
+                    echo __DIR__ . '/../../images/' . $imagerow['image'];
+                }
+            }
+            $deletepost = "DELETE FROM `posts` WHERE `id` = '$id'";
+            if ($dbconnect->conn->query($deletepost) === TRUE) {
+                echo "განცხადება წარმატებით წაიშალა";
+            }
+        } else {
+            echo "ვერაფერი ვერ მოიძებნა";
         }
     }
 }
