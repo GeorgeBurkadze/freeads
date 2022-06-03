@@ -13,7 +13,7 @@ showpassword.addEventListener("change", () =>{
     }
 })
 
-fetch("http://localhost:8000/panel/config/signin.php").then(response => response.text()).then(data => {
+fetch("./config/signin.php").then(response => response.text()).then(data => {
     if (data !== '') {
         usernamemsg.innerHTML = `<b class="text-success">${data}</b>`
     }
@@ -36,7 +36,7 @@ signinbutton.addEventListener("click", () => {
             passwordmsg.innerHTML = ``
         }
     } else {
-        fetch("http://localhost:8000/panel/config/signin.php", {
+        fetch("./config/signin.php", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

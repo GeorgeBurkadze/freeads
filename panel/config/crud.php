@@ -39,5 +39,16 @@ class Crud
             echo "ვერაფერი ვერ მოიძებნა";
         }
     }
+
+    public function publishpost()
+    {
+        require_once __DIR__ . '/connect.php';
+        $id = $_GET['id'];
+        $publishpost = "UPDATE `posts` SET `status` = 'published' WHERE `id` = '$id'";
+        if ($dbconnect->conn->query($publishpost) === TRUE) {
+            echo "განცხადება წარმატებით გამოქვეყნდა";
+        }
+        
+    }
 }
 $crud = new GlobalCrud;

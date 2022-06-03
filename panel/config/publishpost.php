@@ -7,7 +7,7 @@ class Deletepost
         $id = $_GET['id'];
         require_once __DIR__ . "/crud.php";
         if (!empty($id)) {
-            $crud->deletepost();
+            $crud->publishpost();
         } else {
             echo "აიდი ვერ მოიძებნა";
         }
